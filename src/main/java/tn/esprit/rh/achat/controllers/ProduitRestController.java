@@ -3,6 +3,7 @@ package tn.esprit.rh.achat.controllers;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.rh.achat.dto.ProduitDTO;
 import tn.esprit.rh.achat.entities.Produit;
 import tn.esprit.rh.achat.services.IProduitService;
 
@@ -18,14 +19,13 @@ public class ProduitRestController {
 	@Autowired
 	IProduitService produitService;
 
-	// http://localhost:8089/SpringMVC/produit/retrieve-all-produits
+
 	@GetMapping("/retrieve-all-produits")
 	@ResponseBody
 	public List<Produit> getProduits() {
 		return produitService.retrieveAllProduits();
 	}
 
-	// http://localhost:8089/SpringMVC/produit/retrieve-produit/8
 	@GetMapping("/retrieve-produit/{produit-id}")
 	@ResponseBody
 	public Produit retrieveRayon(@PathVariable("produit-id") Long produitId) {
@@ -35,8 +35,9 @@ public class ProduitRestController {
 
 	@PostMapping("/add-produit")
 	@ResponseBody
-	public Produit addProduit(@RequestBody Produit p) {
-		return produitService.addProduit(p);
+	public Produit addProduit(@RequestBody ProduitDTO p) {
+		Produit produit = new Produit(p.getIdProduit(),p.getCodeProduit(), p.getLibelleProduit(), p.getPrix(),p.getDateCreation(),p.getDateDerniereModification(),p.getStock(),p.getDetailFacture(), p.getCategorieProduit());
+		return produitService.addProduit(produit);
 	}
 
 
@@ -48,15 +49,11 @@ public class ProduitRestController {
 
 	@PutMapping("/modify-produit")
 	@ResponseBody
-	public Produit modifyProduit(@RequestBody Produit p) {
-		return produitService.updateProduit(p);
+	public Produit modifyProduit(@RequestBody ProduitDTO p) {
+		Produit produit = new Produit(p.getIdProduit(),p.getCodeProduit(), p.getLibelleProduit(), p.getPrix(),p.getDateCreation(),p.getDateDerniereModification(),p.getStock(),p.getDetailFacture(), p.getCategorieProduit());
+		return produitService.updateProduit(produit);
 	}
 
-	/*
-	 * Si le responsable magasin souhaite modifier le stock du produit il peut
-	 * le faire en l'affectant au stock en question
-	 */
-	// http://localhost:8089/SpringMVC/produit/assignProduitToStock/1/5
 	@PutMapping(value = "/assignProduitToStock/{idProduit}/{idStock}")
 	public void assignProduitToStock(@PathVariable("idProduit") Long idProduit, @PathVariable("idStock") Long idStock) {
 		produitService.assignProduitToStock(idProduit, idStock);
