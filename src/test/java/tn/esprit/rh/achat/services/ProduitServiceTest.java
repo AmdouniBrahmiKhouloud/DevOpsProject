@@ -12,15 +12,5 @@ import java.util.List;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProduitServiceTest {
 
-    @Autowired
-    IProduitService ps;
-
-    @Test
-    @Order(1)
-    public void testRetrieveAllUsers() {
-        List<Produit> listProduits = ps.retrieveAllProduits();
-        Assertions.assertEquals(0, listProduits.size());
-    }
-
 
 }
