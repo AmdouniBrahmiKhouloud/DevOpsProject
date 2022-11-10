@@ -83,15 +83,15 @@ public class OperateurServiceTest {
         verify(operateurRepository).deleteById((Long) any());
     }
 
-    @Test
-    void testUpdateOperateur() {
-        Operateur operateur = new Operateur();
-        operateur.setFactures(new HashSet<>());
-        operateur.setIdOperateur(1L);
-        operateur.setNom("Nom");
-        operateur.setPassword("1234");
-        operateur.setPrenom("Prenom");
-        when(operateurRepository.save((Operateur) any())).thenReturn(operateur);
+  //  @Test
+  //  void testUpdateOperateur() {
+      //  Operateur operateur = new Operateur();
+       // operateur.setFactures(new HashSet<>());
+        //operateur.setIdOperateur(1L);
+       // operateur.setNom("Nom");
+       // operateur.setPassword("1234");
+       // operateur.setPrenom("Prenom");
+     //   when(operateurRepository.save((Operateur) any())).thenReturn(operateur);
 
 //        Operateur operateur1 = new Operateur();
 //        operateur1.setFactures(new HashSet<>());
@@ -101,6 +101,6 @@ public class OperateurServiceTest {
 //        operateur1.setPrenom("Prenom");
 //        assertSame(operateur1, operateurServiceImpl.updateOperateur(operateur1));
 //        verify(operateurRepository).save((Operateur) any());
-    }
+  //  }
 
 }
