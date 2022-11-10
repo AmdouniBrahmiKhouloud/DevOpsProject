@@ -11,6 +11,7 @@ public interface IReglementService {
 	Reglement addReglement(Reglement r);
 	Reglement retrieveReglement(Long id);
 	List<Reglement> retrieveReglementByFacture(Long idFacture);
+	void deleteReglement(Long id);
 	float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate); 
 
 }

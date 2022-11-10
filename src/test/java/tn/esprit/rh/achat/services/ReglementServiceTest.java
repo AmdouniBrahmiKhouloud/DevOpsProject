@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+//@SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ExtendWith(MockitoExtension.class)
 public class ReglementServiceTest {
@@ -30,11 +30,11 @@ public class ReglementServiceTest {
     @InjectMocks
     ReglementServiceImpl reglementServiceImpl;
 
-    Reglement reglement = new Reglement(1L,11,1,true);
+    Reglement reglement = new Reglement(1L,11.1f,1.1f,true);
     List<Reglement> listReglements = new ArrayList<Reglement>() {
         {
-            add(new Reglement(2L,12,2,true));
-            add(new Reglement(3L,13,3,true)));
+            add(new Reglement(2L,12.0f,2.0f,true));
+            add(new Reglement(3L,13.0f,3.0f,true));
         }
     };
 
@@ -46,41 +46,42 @@ public class ReglementServiceTest {
         verify(reglementRepository).findById((Long) any());
 
     }
-//
-//
-//    @Test
-//    void testAddOperateur() {
-//        Operateur operateur = new Operateur();
-//        operateur.setIdOperateur(10L);
-//        operateur.setNom("op1");
-//        operateur.setPassword("123");
-//        operateur.setPrenom("pre1");
-//        when(operateurRepository.save(any())).thenReturn(operateur);
-//        assertSame(operateur, operateurServiceImpl.addOperateur(operateur));
-//        assertNotNull(operateur.getIdOperateur());
-//        verify(operateurRepository).save(any());
-//    }
-//
-//
-//    @Test
-//    void testRetrieveAllOperateurs() {
-//        List<Operateur> actualRetrieveAllOperateursResult = this.operateurServiceImpl.retrieveAllOperateurs();
-//        Assertions.assertEquals(0, actualRetrieveAllOperateursResult.size());
-//        verify(operateurRepository).findAll();
-//
-//    }
-//
-//    @Test
-//    void testDeleteOperateur() {
-//        Operateur operateur = new Operateur();
-//        operateur.setIdOperateur(10L);
-//        operateur.setNom("op1");
-//        operateur.setPassword("123");
-//        operateur.setPrenom("pre1");
-//        doNothing().when(operateurRepository).deleteById((Long) any());
-//        operateurServiceImpl.deleteOperateur(operateur.getIdOperateur());
-//        verify(operateurRepository).deleteById((Long) any());
-//    }
+
+
+    @Test
+    void testAddOperateur() {
+        Reglement reglement = new Reglement();
+        reglement.setIdReglement(10L);
+        reglement.setMontantPaye(15.2f);
+        reglement.setMontantRestant(13.2f);
+        reglement.setPayee(true);
+        when(reglementRepository.save(any())).thenReturn(reglement);
+        assertSame(reglement, reglementServiceImpl.addReglement(reglement));
+        assertNotNull(reglement.getIdReglement());
+        verify(reglementRepository).save(any());
+    }
+
+
+    @Test
+    void testRetrieveAllReglements() {
+        List<Reglement> actualRetrieveAllReglementsResult = this.reglementServiceImpl.retrieveAllReglements();
+        Assertions.assertEquals(0, actualRetrieveAllReglementsResult.size());
+        verify(reglementRepository).findAll();
+
+    }
+
+    @Test
+    void testDeleteReglement() {
+        Reglement reglement = new Reglement();
+        reglement.setIdReglement(10L);
+        reglement.setIdReglement(10L);
+        reglement.setMontantPaye(15.2f);
+        reglement.setMontantRestant(13.2f);
+        reglement.setPayee(true);
+        doNothing().when(reglementRepository).deleteById((Long) any());
+        reglementServiceImpl.deleteReglement(reglement.getIdReglement());
+        verify(reglementRepository).deleteById((Long) any());
+    }
 
 
 }
