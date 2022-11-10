@@ -101,6 +101,6 @@ public class OperateurServiceTest {
 //        operateur1.setPrenom("Prenom");
 //        assertSame(operateur1, operateurServiceImpl.updateOperateur(operateur1));
 //        verify(operateurRepository).save((Operateur) any());
-//    }
+    }
 
 }
