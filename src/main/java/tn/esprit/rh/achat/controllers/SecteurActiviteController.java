@@ -12,12 +12,11 @@ import java.util.List;
 @RestController
 @Api(tags = "Gestion des secteurs activites")
 @RequestMapping("/secteurActivite")
-@CrossOrigin("*")
 public class SecteurActiviteController {
 
 	@Autowired
 	ISecteurActiviteService secteurActiviteService;
-	
+
 	// http://localhost:8089/SpringMVC/secteurActivite/retrieve-all-secteurActivite
 	@GetMapping("/retrieve-all-secteurActivite")
 	@ResponseBody
@@ -36,7 +35,8 @@ public class SecteurActiviteController {
 	@PostMapping("/add-secteurActivite")
 	@ResponseBody
 	public SecteurActivite addSecteurActivite(@RequestBody SecteurActiviteDTO sa) {
-		SecteurActivite persistentSA = new SecteurActivite(sa.getIdSecteurActivite(),sa.getCodeSecteurActivite(), sa.getLibelleSecteurActivite(), sa.getFournisseurs());
+		SecteurActivite persistentSA = new SecteurActivite(sa.getIdSecteurActivite(), sa.getCodeSecteurActivite(),
+				sa.getLibelleSecteurActivite(), sa.getFournisseurs());
 		return secteurActiviteService.addSecteurActivite(persistentSA);
 	}
 
@@ -50,9 +50,9 @@ public class SecteurActiviteController {
 	@PutMapping("/modify-secteurActivite")
 	@ResponseBody
 	public SecteurActivite modifySecteurActivite(@RequestBody SecteurActiviteDTO sa) {
-		SecteurActivite persistentSA = new SecteurActivite(sa.getIdSecteurActivite(),sa.getCodeSecteurActivite(), sa.getLibelleSecteurActivite(), sa.getFournisseurs());
+		SecteurActivite persistentSA = new SecteurActivite(sa.getIdSecteurActivite(), sa.getCodeSecteurActivite(),
+				sa.getLibelleSecteurActivite(), sa.getFournisseurs());
 		return secteurActiviteService.updateSecteurActivite(persistentSA);
 	}
 
-	
 }
