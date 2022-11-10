@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ExtendWith(MockitoExtension.class)
 public class OperateurServiceTest {
@@ -83,16 +83,16 @@ public class OperateurServiceTest {
         verify(operateurRepository).deleteById((Long) any());
     }
 
-//    @Test
-//    void testUpdateOperateur() {
-//        Operateur operateur = new Operateur();
-//        operateur.setFactures(new HashSet<>());
-//        operateur.setIdOperateur(1L);
-//        operateur.setNom("Nom");
-//        operateur.setPassword("1234");
-//        operateur.setPrenom("Prenom");
-//        when(operateurRepository.save((Operateur) any())).thenReturn(operateur);
-//
+    @Test
+    void testUpdateOperateur() {
+        Operateur operateur = new Operateur();
+        operateur.setFactures(new HashSet<>());
+        operateur.setIdOperateur(1L);
+        operateur.setNom("Nom");
+        operateur.setPassword("1234");
+        operateur.setPrenom("Prenom");
+        when(operateurRepository.save((Operateur) any())).thenReturn(operateur);
+
 //        Operateur operateur1 = new Operateur();
 //        operateur1.setFactures(new HashSet<>());
 //        operateur1.setIdOperateur(1L);
