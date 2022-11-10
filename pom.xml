@@ -85,7 +85,7 @@
             </plugin>
 
         </plugins>
-        <finalName>DevOpsProject</finalName>
+        <finalName>operateur</finalName>
 
     </build>
 
